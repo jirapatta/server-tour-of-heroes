@@ -138,3 +138,117 @@ the `WAR` file:
 </dependency>
 ```
 
+### Note from gcloud_gae.org
+<pre>
+* ========== gcloud commandline installation and initialization
+* Google Cloud SDK installed location
+/Applications/google-cloud-sdk
+
+* extra components
+┌─────────────────────────────────────────────────────────────────────────────────────────────────────────────┐
+│                                                  Components                                                 │
+├───────────────┬──────────────────────────────────────────────────────┬──────────────────────────┬───────────┤
+│     Status    │                         Name                         │            ID            │    Size   │
+├───────────────┼──────────────────────────────────────────────────────┼──────────────────────────┼───────────┤
+│ Not Installed │ App Engine Go Extensions                             │ app-engine-go            │  97.7 MiB │
+│ Not Installed │ Cloud Bigtable Command Line Tool                     │ cbt                      │   4.0 MiB │
+│ Not Installed │ Cloud Bigtable Emulator                              │ bigtable                 │   3.5 MiB │
+│ Not Installed │ Cloud Datalab Command Line Tool                      │ datalab                  │   < 1 MiB │
+│ Not Installed │ Cloud Datastore Emulator                             │ cloud-datastore-emulator │  15.4 MiB │
+│ Not Installed │ Cloud Datastore Emulator (Legacy)                    │ gcd-emulator             │  38.1 MiB │
+│ Not Installed │ Cloud Pub/Sub Emulator                               │ pubsub-emulator          │  33.2 MiB │
+│ Not Installed │ Emulator Reverse Proxy                               │ emulator-reverse-proxy   │  14.5 MiB │
+│ Not Installed │ Google Container Local Builder                       │ container-builder-local  │   3.7 MiB │
+│ Not Installed │ Google Container Registry's Docker credential helper │ docker-credential-gcr    │   2.2 MiB │
+│ Not Installed │ gcloud Alpha Commands                                │ alpha                    │   < 1 MiB │
+│ Not Installed │ gcloud Beta Commands                                 │ beta                     │   < 1 MiB │
+│ Not Installed │ gcloud app Java Extensions                           │ app-engine-java          │ 116.9 MiB │
+│ Not Installed │ gcloud app PHP Extensions                            │ app-engine-php           │  21.9 MiB │
+│ Not Installed │ gcloud app Python Extensions                         │ app-engine-python        │   6.2 MiB │
+│ Not Installed │ kubectl                                              │ kubectl                  │  15.9 MiB │
+│ Installed     │ BigQuery Command Line Tool                           │ bq                       │   < 1 MiB │
+│ Installed     │ Cloud SDK Core Libraries                             │ core                     │   7.2 MiB │
+│ Installed     │ Cloud Storage Command Line Tool                      │ gsutil                   │   3.0 MiB │
+└───────────────┴──────────────────────────────────────────────────────┴──────────────────────────┴───────────┘
+To install or remove components at your current SDK version [175.0.0], run:
+  $ gcloud components install COMPONENT_ID
+  $ gcloud components remove COMPONENT_ID
+
+To update your SDK installation to the latest version [175.0.0], run:
+  $ gcloud components update
+
+* gcloud init
+... select or create a project
+
+Not setting default zone/region (this feature makes it easier to use
+[gcloud compute] by setting an appropriate default value for the
+--zone and --region flag).
+See https://cloud.google.com/compute/docs/gcloud-compute section on how to set
+default compute region and zone manually. If you would like [gcloud init] to be
+able to do this for you the next time you run it, make sure the
+Compute Engine API is enabled for your project on the
+https://console.developers.google.com/apis page.
+
+Created a default .boto configuration file at [/Users/jirapat/.boto]. See this file and
+[https://cloud.google.com/storage/docs/gsutil/commands/config] for more
+information about configuring Google Cloud Storage.
+Your Google Cloud SDK is configured and ready to use!
+
+** Commands that require authentication will use jirapat.tanghongs@gmail.com by default
+** Commands will reference project `backend-tour-of-heroes` by default
+Run `gcloud help config` to learn how to change individual settings
+
+This gcloud configuration is called [default]. You can create additional configurations if you work with multiple accounts and/or projects.
+Run `gcloud topic configurations` to learn more.
+
+Some things to try next:
+
+** Run `gcloud --help` to see the Cloud Platform services you can interact with. And run `gcloud help COMMAND` to get help on any gcloud command.
+** Run `gcloud topic -h` to learn about advanced features of the SDK like arg files and output formatting
+
+
+
+* ========== Google App Engine Sample
+* github for sample projects
+** base
+https://github.com/GoogleCloudPlatform
+** java sample
+https://github.com/GoogleCloudPlatform/getting-started-java
+** gae standard java 8
+https://github.com/GoogleCloudPlatform/getting-started-java/tree/master/appengine-standard-java8
+** springboot-appengine-standard
+https://github.com/GoogleCloudPlatform/getting-started-java/tree/master/appengine-standard-java8/springboot-appengine-standard
+
+* Using Apache Maven and the App Engine Plugin (Cloud SDK-based)
+https://cloud.google.com/appengine/docs/standard/java/tools/using-maven
+https://cloud.google.com/appengine/docs/standard/java/tools/maven-reference
+
+* clone whole getting-started-java
+# on home directory
+mkdir getting-started-java
+git clone https://github.com/GoogleCloudPlatform/getting-started-java.git getting-started-java/
+
+* test springboot-appengine-standard on server
+cd appengine-standard-java8/springboot-appengine-standard
+
+# optional describe appengine goals, build project
+mvn help:describe -Dplugin=appengine
+mvn clean package
+
+# run locally
+mvn appengine:run
+
+# test locally
+# if on cloud console, use Web Preview button to launch preview page
+# Ctrl-c to stop test server
+
+# list and set default project to deploy to
+gcloud projects list
+gcloud config set project backend-tour-of-heroes
+
+# deploy
+mvn appengine:deploy
+
+</pre>
+
+
